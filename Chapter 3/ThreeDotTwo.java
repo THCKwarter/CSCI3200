@@ -4,6 +4,10 @@
 public class ThreeDotTwo {
 	public static void main(String[] args) {
 		//Single Linked List Test
+		/*
+		System.out.println("===================================");
+		System.out.println("Single Linked List Swap Method");
+		System.out.println("===================================");
 		MySingleLinkedList<Integer> mll = new MySingleLinkedList<>();
 		mll.add(4);
 		mll.add(9);
@@ -17,18 +21,27 @@ public class ThreeDotTwo {
 		System.out.println("Swapped: " + mll.printList());
 		mll.swap(2,3);
 		System.out.println("Swapped: " + mll.printList());
+		*/
+		
+		System.out.println("===================================");
+		System.out.println("Double Linked List Swap Method");
+		System.out.println("===================================");
 
 		//Double Linked List Test
-		/*
 		MyDoubleLinkedList<Integer> mdll = new MyDoubleLinkedList<>();
-		mdll.add(0);
-		mdll.add(7);
+		mdll.add(1);
+		mdll.add(2);
 		mdll.add(3);
-		System.out.println(mdll.printList());
-		System.out.println(mdll.printListRev());
-		//mdll.swap(0,1);
-		System.out.println(mdll.printList());
-		System.out.println(mdll.printListRev());
-		*/
+		mdll.add(4);
+		mdll.add(5);
+		System.out.println("Before Swap (Rev): " + mdll.printListRev());
+		mdll.swap(0,1);
+		System.out.println("Swapped (Rev): " + mdll.printListRev());
+		System.out.println("===================================");
+		System.out.println("Before Swap: " + mdll.printList());
+		System.out.println("Before Swap (Rev): " + mdll.printListRev());
+		mdll.swap(1,4);
+		System.out.println("Swapped: " + mdll.printList());
+		System.out.println("Swapped (Rev): " + mdll.printListRev());
 	}
 }

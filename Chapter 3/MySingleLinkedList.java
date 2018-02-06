@@ -145,7 +145,7 @@ public class MySingleLinkedList<E> {
 		}
 	}
 
-	//Swap Method
+	//Swap Method (Takes indexes that need to be swapped)
 	public E swap(int index1, int index2){
 		if(index1 < 0 || index1 >= size || index2 < 0 || index2 >= size)
 			return null;

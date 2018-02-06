@@ -213,52 +213,21 @@ public class MyDoubleLinkedList<E> {
 		}
 	}
 
-	//Swap Method
-	//Swap Method
+//Swap Method (Takes indexes that need to be swapped)
 	public E swap(int index1, int index2){
 		if(index1 < 0 || index1 >= size || index2 < 0 || index2 >= size)
 			return null;
 
+		//Store temp values
 		MyNode<E> temp1 = new MyNode<E>(get(index1));
 		MyNode<E> temp2 = new MyNode<E>(get(index2));
 		MyNode<E> current = start;
-		System.out.println("Swapping: " + temp1 + " and " + temp2);
-		
-		if(index1 == 0){
-			temp2.next = start.next;
-			start = temp2;
-
-			current = start;
-			for(int i = 1; i < index2; i++){
-				current = current.next;
-			}
-			temp1.next = current.next.next;
-			current.next = temp1;
-		}else if(index2 == 0){
-			temp1.next = start.next;
-			start = temp1;
-
-			current = start;
-			for(int i = 1; i < index1; i++){
-				current = current.next;
-			}
-			temp2.next = current.next.next;
-			current.next = temp2;
-		}else{
-			current = start;
-			for(int i = 1; i < index1; i++){
-				current = current.next;
-			}
-			temp2.next = current.next.next;
-			current.next = temp2;
-
-			current = start;
-			for(int i = 1; i < index2; i++){
-				current = current.next;
-			}
-			temp1.next = current.next.next;
-			current.next = temp1;
-		}
+ 
+		//Swap
+		delete(index1);
+		insert(temp2.data, index1);
+		delete(index2);
+		insert(temp1.data, index2);
 		return null;
 	}
 
