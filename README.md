@@ -18,8 +18,6 @@
 
 3.6 - Write a program for the Josephus problem (similar to hot potato), calculate the Big-Oh of your solution. Prompt the user for the value of N.
 
-3.7, 3.8 - Calculate Big-Oh notation for these two methods. Be sure to take into account the run time of the methods being used in the loops. Show your work.
-
 3.20 - Lazy deletion (mark items deleted instead of actually removing them), a: pro/con of lazy deletion, b: implement lazy deletion on the doubly linked list class we wrote in class (make sure the remove() method performs lazy deletion, and that all other methods honor the deleted nodes correctly, include the process for actually deleting items after half the items in the structure are considered deleted)
 
 MyQueue - Create your own MyQueue class, be sure to use generic data types like we did with MyStack, store first/last node, make sure all methods execute in constant time, create a test class to show the Queue works correctly
