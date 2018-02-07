@@ -4,7 +4,6 @@
 public class ThreeDotTwo {
 	public static void main(String[] args) {
 		//Single Linked List Test
-		/*
 		System.out.println("===================================");
 		System.out.println("Single Linked List Swap Method");
 		System.out.println("===================================");
@@ -21,7 +20,6 @@ public class ThreeDotTwo {
 		System.out.println("Swapped: " + mll.printList());
 		mll.swap(2,3);
 		System.out.println("Swapped: " + mll.printList());
-		*/
 		
 		System.out.println("===================================");
 		System.out.println("Double Linked List Swap Method");
