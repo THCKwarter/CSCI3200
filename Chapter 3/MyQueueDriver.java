@@ -3,6 +3,6 @@
 
 public class MyQueueDriver {
 	public static void main(String[] args) {
-		
+		MyQueue<Integer> q = new MyQueue<>();
 	}
 }
