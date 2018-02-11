@@ -21,3 +21,6 @@
 3.20 - Lazy deletion (mark items deleted instead of actually removing them), a: pro/con of lazy deletion, b: implement lazy deletion on the doubly linked list class we wrote in class (make sure the remove() method performs lazy deletion, and that all other methods honor the deleted nodes correctly, include the process for actually deleting items after half the items in the structure are considered deleted)
 
 MyQueue - Create your own MyQueue class, be sure to use generic data types like we did with MyStack, store first/last node, make sure all methods execute in constant time, create a test class to show the Queue works correctly
+
+# Chapter 3 Bonus
+3.22,3.23 - Write a program that asks the user for 2 inputs, first the keyword infix/postfix, then a formula in that given format
