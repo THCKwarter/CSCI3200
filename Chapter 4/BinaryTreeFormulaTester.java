@@ -23,8 +23,8 @@ public class BinaryTreeFormulaTester{
 		input = scan.nextLine();
 
 		//infix - ((a-d)+(b*c))
-		//prefix - (+(-ad)(*bc))
-		//postfix ((ad-)(bc*)+)
+		//prefix - +2+11 - +-ad*bc
+		//postfix ad-bc*+
 		if(choice.equals("in")){
 			EquationBinaryTree inTree = new EquationBinaryTree();
 			inTree.populateFromInfix(input);
