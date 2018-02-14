@@ -24,3 +24,6 @@ MyQueue - Create your own MyQueue class, be sure to use generic data types like 
 
 # Chapter 3 Bonus
 3.22,3.23 - Write a program that asks the user for 2 inputs, first the keyword infix/postfix, then a formula in that given format
+
+# Chapter 4
+BinaryTreeFormula - Create methods for reading postfix and prefix formulas and storing them in the tree. DO NOT convert prefix/postfix to infix before storing in the tree. Make the methods as efficient as possible. Include a tester class and make sure the tree is printed in all 3 formats after being populated from any of the three. Include Big-Oh notation for all 3 populate methods, and all 3 print methods.
