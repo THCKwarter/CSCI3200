@@ -53,11 +53,11 @@ public class EquationBinaryTree {
 
 	//======================================
 	//Populate with infix function
-	public void populateFromInfix(String infix){
-		root = populateFromInfixHelper(infix);
+	public void populateFromInfix(String infix){ 
+		root = populateFromInfixHelper(infix); 
 	}
-	private Node populateFromInfixHelper(String infix){
-		String[] parts = infixBreakdownHelper(infix);
+	private Node populateFromInfixHelper(String infix){ 
+		String[] parts = infixBreakdownHelper(infix); 
 		Node temp = new Node(parts[0].charAt(0));
 		if(parts[1].length() == 1)
 			temp.leftChild = new Node(parts[1].charAt(0));
@@ -70,7 +70,7 @@ public class EquationBinaryTree {
 			temp.rightChild = populateFromInfixHelper(parts[2]);
 		return temp;
 	}
-	private String[] infixBreakdownHelper(String infix){
+	private String[] infixBreakdownHelper(String infix){ 
 		String[] temp = new String[3];
 		int pos = 0;
 		int count = 0;

@@ -1,0 +1,5 @@
+All print methods: O(N)
+
+Infix: O(N)
+Prefix: O(N)
+Postfix: O(N)
