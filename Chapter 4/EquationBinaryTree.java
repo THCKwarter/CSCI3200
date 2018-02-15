@@ -124,7 +124,6 @@ public class EquationBinaryTree {
 		
 		//Seperate left and right sides
 		int end = 1;
-		int opCount = 1;
 		int count = 1;
 		for(int i = 1; i < pre.length(); i++){
 			if(isOperator(pre.charAt(i))){
@@ -152,40 +151,39 @@ public class EquationBinaryTree {
 		root = populateFromPostfixHelper(post);
 	}
 	private Node populateFromPostfixHelper(String post){
-		String[] parts = prefixBreakdownHelper(pre);
+		String[] parts = postfixBreakdownHelper(post);
+		for(String s : parts)
+			System.out.println("Parts: " + s);
 		Node temp = new Node(parts[0].charAt(0));
-		if(parts[1].length() == 1)
-			temp.leftChild = new Node(parts[1].charAt(0));
-		else
-			temp.leftChild = populateFromPrefixHelper(parts[1]);
-
 		if(parts[2].length() == 1)
-			temp.rightChild = new Node(parts[2].charAt(0));
+			temp.leftChild = new Node(parts[2].charAt(0));
 		else
-			temp.rightChild = populateFromPrefixHelper(parts[2]);
+			temp.leftChild = populateFromPostfixHelper(parts[2]);
+
+		if(parts[1].length() == 1)
+			temp.rightChild = new Node(parts[1].charAt(0));
+		else
+			temp.rightChild = populateFromPostfixHelper(parts[1]);
 		return temp;
 	}
 	private String[] postfixBreakdownHelper(String post){
-		//abc*+de*f+g*+
 		System.out.println("Post: " + post);
 		String[] temp = new String[3];
 		
-		//If pre is something like "-15"
+		//If post is something like "15-"
 		if(post.length() == 3){
 			temp[2] = "" + post.charAt(0);//left
 			temp[1] = "" + post.charAt(1);//middle
-			temp[0] = "" + post.charAt(2);//right
+			temp[0] = "" + post.charAt(2);//Operator
 			return temp;
 		}
 		//Assign left
-		temp[2] = "" + post.charAt(0);//left
+		temp[0] = "" + post.charAt(post.length()-1);//Operator
 		
-		//abc*+de*f+g*+
-		//Seperate left and right sides
+		//Seperate left and right
 		int end = post.length();
-		int opCount = 1;
 		int count = 1;
-		for(int i = post.length(); i > post.length(); i--){
+		for(int i = post.length()-2; i >= 0; i--){
 			if(isOperator(post.charAt(i))){
 				count++;
 			}else{
@@ -197,13 +195,13 @@ public class EquationBinaryTree {
 			}
 		}
 		
-		//Assign middle
-		System.out.println("Middle: " + "");
-		//temp[1] = "" + post.substring(1,end+1);//middle
-		
 		//Assign right
-		System.out.println("Right: " + "");
-		//temp[2] = post.substring(end+1, post.length());//right
+		temp[1] = "" + post.substring(end,(post.length()-1));//right
+		System.out.println("Right: " + temp[1]);
+		
+		//Assign left
+		temp[2] = post.substring(0, end);//left
+		System.out.println("Left: " + temp[2]);
 		return temp;
 	}
 	
