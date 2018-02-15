@@ -17,29 +17,33 @@ public class BinaryTreeFormulaTester{
 		String input = "";
 
 		//Get formula type and formula
-		System.out.println("What -fix format are you inputting? (in/pre/post)");
+		System.out.println("Select your format: (in/pre/post)");
 		choice = scan.nextLine();
 		System.out.println("Input your " + choice + "fix formula: ");
 		input = scan.nextLine();
 
 		//infix - ((a-d)+(b*c))
-		//prefix - +2+11 - +-ad*bc
-		//postfix ad-bc*+
+		//prefix - ++a*bc*+*defg
+		//postfix abc*+de*f+g*+
+		EquationBinaryTree tree = new EquationBinaryTree();
 		if(choice.equals("in")){
-			EquationBinaryTree inTree = new EquationBinaryTree();
-			inTree.populateFromInfix(input);
-			System.out.println("Infix: " + inTree.toInfix());
-			System.out.println("Prefix: " + inTree.toPrefix());
-			System.out.println("Postfix: " + inTree.toPostfix());
+			tree.populateFromInfix(input);
+			System.out.println("==========================");
+			System.out.println("Infix: " + tree.toInfix());
+			System.out.println("Prefix: " + tree.toPrefix());
+			System.out.println("Postfix: " + tree.toPostfix());
 		}else if(choice.equals("pre")){
-			EquationBinaryTree preTree = new EquationBinaryTree();
-			preTree.populateFromPrefix(input);
-			System.out.println("Infix: " + preTree.toInfix());
-			System.out.println("Prefix: " + preTree.toPrefix());
-			System.out.println("Postfix: " + preTree.toPostfix());
+			tree.populateFromPrefix(input);
+			System.out.println("==========================");
+			System.out.println("Infix: " + tree.toInfix());
+			System.out.println("Prefix: " + tree.toPrefix());
+			System.out.println("Postfix: " + tree.toPostfix());
 		}else if(choice.equals("post")){
-			EquationBinaryTree postTree = new EquationBinaryTree();
-			postTree.populateFromPostfix(input);
+			tree.populateFromPostfix(input);
+			System.out.println("==========================");
+			System.out.println("Infix: " + tree.toInfix());
+			System.out.println("Prefix: " + tree.toPrefix());
+			System.out.println("Postfix: " + tree.toPostfix());
 		}else{
 			System.out.println("Invalid input.");
 		}

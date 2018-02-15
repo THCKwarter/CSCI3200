@@ -97,8 +97,6 @@ public class EquationBinaryTree {
 	}
 	private Node populateFromPrefixHelper(String pre){
 		String[] parts = prefixBreakdownHelper(pre);
-		for(String s : parts)
-			System.out.println("String parts: " + s);
 		Node temp = new Node(parts[0].charAt(0));
 		if(parts[1].length() == 1)
 			temp.leftChild = new Node(parts[1].charAt(0));
@@ -112,39 +110,39 @@ public class EquationBinaryTree {
 		return temp;
 	}
 	private String[] prefixBreakdownHelper(String pre){
-		System.out.println("String pre: " + pre);
 		String[] temp = new String[3];
 		
 		//If pre is something like "-15"
 		if(pre.length() == 3){
-			System.out.println("Chars: " + pre.charAt(0) + pre.charAt(1) + pre.charAt(2));
 			temp[0] = "" + pre.charAt(0);//left
 			temp[1] = "" + pre.charAt(1);//middle
 			temp[2] = "" + pre.charAt(2);//right
 			return temp;
 		}
 		//Assign left
-		System.out.println("Left: " + pre.charAt(0));
 		temp[0] = "" + pre.charAt(0);//left
 		
-		//+2+11 - +-ad*bc (Next characters = operators+1)
+		//Seperate left and right sides
 		int end = 1;
 		int opCount = 1;
-		int count = 2;
+		int count = 1;
 		for(int i = 1; i < pre.length(); i++){
-			if(isOperator(pre.charAt(i)))
-				opCount++;
+			if(isOperator(pre.charAt(i))){
+				count++;
+			}else{
+				count--;
+			}
+			if(count == 0){
+				end = i;
+				break;
+			}
 		}
-		System.out.println("Op Count: " + opCount);
-		System.out.println("Length: " + pre.length());
 		
 		//Assign middle
-		System.out.println("Middle: " + pre.substring(1,(pre.length()/opCount)));
-		temp[1] = "" + pre.substring(1,end-1);//middle
+		temp[1] = "" + pre.substring(1,end+1);//middle
 		
 		//Assign right
-		System.out.println("Right: " + pre.substring(end-1, pre.length()));
-		temp[2] = pre.substring(end-1, pre.length());//right
+		temp[2] = pre.substring(end+1, pre.length());//right
 		return temp;
 	}
 
@@ -154,10 +152,59 @@ public class EquationBinaryTree {
 		root = populateFromPostfixHelper(post);
 	}
 	private Node populateFromPostfixHelper(String post){
-		return null;
+		String[] parts = prefixBreakdownHelper(pre);
+		Node temp = new Node(parts[0].charAt(0));
+		if(parts[1].length() == 1)
+			temp.leftChild = new Node(parts[1].charAt(0));
+		else
+			temp.leftChild = populateFromPrefixHelper(parts[1]);
+
+		if(parts[2].length() == 1)
+			temp.rightChild = new Node(parts[2].charAt(0));
+		else
+			temp.rightChild = populateFromPrefixHelper(parts[2]);
+		return temp;
 	}
 	private String[] postfixBreakdownHelper(String post){
-		return null;
+		//abc*+de*f+g*+
+		System.out.println("Post: " + post);
+		String[] temp = new String[3];
+		
+		//If pre is something like "-15"
+		if(post.length() == 3){
+			temp[2] = "" + post.charAt(0);//left
+			temp[1] = "" + post.charAt(1);//middle
+			temp[0] = "" + post.charAt(2);//right
+			return temp;
+		}
+		//Assign left
+		temp[2] = "" + post.charAt(0);//left
+		
+		//abc*+de*f+g*+
+		//Seperate left and right sides
+		int end = post.length();
+		int opCount = 1;
+		int count = 1;
+		for(int i = post.length(); i > post.length(); i--){
+			if(isOperator(post.charAt(i))){
+				count++;
+			}else{
+				count--;
+			}
+			if(count == 0){
+				end = i;
+				break;
+			}
+		}
+		
+		//Assign middle
+		System.out.println("Middle: " + "");
+		//temp[1] = "" + post.substring(1,end+1);//middle
+		
+		//Assign right
+		System.out.println("Right: " + "");
+		//temp[2] = post.substring(end+1, post.length());//right
+		return temp;
 	}
 	
 	//======================================
