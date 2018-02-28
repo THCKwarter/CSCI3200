@@ -58,8 +58,7 @@ public class BinaryTree441<E extends Comparable<? super E>>
     
     //Compare structures
     public boolean compareWith(Node root2){
-    	compareWithHelper(this.root, root2);
-    	return false;
+    	return compareWithHelper(this.root, root2);
     }
     private boolean compareWithHelper(Node r1, Node r2){
     	//Empty trees are equal
