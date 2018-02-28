@@ -27,3 +27,11 @@ MyQueue - Create your own MyQueue class, be sure to use generic data types like 
 
 # Chapter 4 Assignments
 BinaryTreeFormula - Create methods for reading postfix and prefix formulas and storing them in the tree. DO NOT convert prefix/postfix to infix before storing in the tree. Make the methods as efficient as possible. Include a tester class and make sure the tree is printed in all 3 formats after being populated from any of the three. Include Big-Oh notation for all 3 populate methods, and all 3 print methods.
+
+4.16 - Lazy Deletion on the binary search tree class, make sure to update all methods that are affected by this change.
+
+4.41 - Modify a binary tree class we created, add a method to print all the nodes in level order (root, all nodes at depth 1[root's children], all nodes at depth 2, etc) Make sure the method runs in O(N), and show that it does with comments about runtime at each step in your method.
+
+4.46 - Modify a binary tree class we created, add a method to see if two binary trees are visually identical (if drawn on paper, would have the same structure, values don't matter).
+
+TreeMap - Practice using Java TreeMap class. Create a program that asks the user for names until they chose to quit, insert the names as keys in the TreeMap, and the number of vowels as the value in the TreeMap. After the user choses to quit inserting names, Traverse the map and print all key/value pairs.
