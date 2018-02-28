@@ -9,6 +9,10 @@ public class BinaryTree441<E extends Comparable<? super E>>
 		root = null;
 	}
 	
+	public Node getRoot(){
+		return root;
+	}
+	
 	//Level Print
 	/*
 	 * add a method to print all the nodes in level order (root, all nodes at depth 1[root's children], 
@@ -50,6 +54,26 @@ public class BinaryTree441<E extends Comparable<? super E>>
             return output;
         }
         return "How?";
+    }
+    
+    //Compare structures
+    public boolean compareWith(Node root2){
+    	compareWithHelper(this.root, root2);
+    	return false;
+    }
+    private boolean compareWithHelper(Node r1, Node r2){
+    	//Empty trees are equal
+    	if(r1 == null && r2 == null){
+    		return true;
+    	}
+    	
+    	//An empty tree != non-empty
+    	if((r1 == null && r2 != null) || (r1 != null && r2 == null)){
+    		return false;
+    	}
+    	
+    	//Otherwise, check with recursion
+    	return compareWithHelper(r1.left, r2.left) && compareWithHelper(r1.right, r2.right);
     }
 	
 	public boolean contains(E val)
