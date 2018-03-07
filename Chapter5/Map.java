@@ -1,3 +1,6 @@
+//CSCI3200 - Chapter 5.20 Map
+//Matthew Johnston
+
 class Map<K,V>{
 	//Variables
 	private QuadraticProbingHashTable<Entry<K,V>> items;
