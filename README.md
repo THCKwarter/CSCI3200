@@ -35,3 +35,7 @@ BinaryTreeFormula - Create methods for reading postfix and prefix formulas and s
 4.46 - Modify a binary tree class we created, add a method to see if two binary trees are visually identical (if drawn on paper, would have the same structure, values don't matter).
 
 TreeMap - Practice using Java TreeMap class. Create a program that asks the user for names until they chose to quit, insert the names as keys in the TreeMap, and the number of vowels as the value in the TreeMap. After the user choses to quit inserting names, Traverse the map and print all key/value pairs.
+
+# Chapter 5 Assignments
+5.20 - Implement a generic Map class using the structure provided in the book. The QuadraticProbingHashTable is available on D2L, you should not modify this class.
+NOTE: Make sure to provide equals and hashCode methods in the private class to get this working properly
