@@ -4,10 +4,8 @@ public class FiveDotTwenty{
 		
 		m.put("Matt", 22);
 		m.put("Liza", 23);
-		System.out.println(m);
+		System.out.println("Get value: ");
 		System.out.println(m.get("Matt"));
-		System.out.println(m.isEmpty());
-		m.makeEmpty();
-		System.out.println(m);
+		System.out.println(m.get("Liza"));
 	}
 }
