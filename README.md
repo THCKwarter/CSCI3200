@@ -39,3 +39,6 @@ TreeMap - Practice using Java TreeMap class. Create a program that asks the user
 # Chapter 5 Assignments
 5.20 - Implement a generic Map class using the structure provided in the book. The QuadraticProbingHashTable is available on D2L, you should not modify this class.
 NOTE: Make sure to provide equals and hashCode methods in the private class to get this working properly
+
+# Chapter 5 Bonus
+5.24 - Implement a hopscotch hash table. Do not compare with other methods. Default the maximum hops to 4, give a constructor that allows this value to be changed.
