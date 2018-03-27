@@ -42,3 +42,13 @@ NOTE: Make sure to provide equals and hashCode methods in the private class to g
 
 # Chapter 5 Bonus
 5.24 - Implement a hopscotch hash table. Do not compare with other methods. Default the maximum hops to 4, give a constructor that allows this value to be changed.
+
+# Chapter 6 Assignments
+6.2 - a: insert items one at a time into a heap, b: bulk insert items into heap
+
+6.3 - Perform deleteMin 3 times on each heap from 6.2, show what the heaps look like after each operation
+
+6.12 - Write a program to take N elements and insert them one by one into a heap, as well as bulk insert. Compare the actual operation count difference for both. Records this for values of N (10, 25, 50, 100)
+Note: Create the list of elements first, then start the operation count as you create the heap and populate it from each method (looking for operations performed by the heap class, not the tester class)
+
+6 - Implement Algorithm 6A
