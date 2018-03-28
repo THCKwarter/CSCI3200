@@ -14,6 +14,7 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	{
 		currentSize = 0;
 		heap = (E[]) new Comparable[ nextSize(size) ];
+		operationCount += 2;
 	}
 	public MyBinaryHeap(E[] items)
 	{
@@ -36,6 +37,10 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 		//fix heap structure
 		buildHeap();//add operation counts to this method
 	}
+	public int getOpCount(){
+		return operationCount;
+	}
+	
 	public String toString()
 	{
 		String output = "Size:" + currentSize + "\n";
@@ -60,23 +65,36 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	public void insert(E item)
 	{
 		//array is currently full, add next depth
-		if( currentSize == heap.length - 1 )
+		operationCount++;
+		if( currentSize == heap.length - 1 ) {
 			growArray(heap.length * 2);
-
+			operationCount++;
+		}
+		
+		operationCount++;
 		currentSize++;
+		operationCount++;
 		int hole = currentSize;
+		operationCount++;
 		heap[0] = item;//store item in temporary location
 		percolateUp(hole);
 
 	}
 	private void percolateUp(int pos)
 	{
+		operationCount++;
 		E item = heap[0];
+		int outsideCount = currentSize + 1;
+		int insideCount = 0;
 		//check if item is smaller than parent
 		//pos/2 = parent, 11 and 10 divided by 2 = 5
-		for(; item.compareTo(heap[pos/2]) < 0; pos = pos/2)
+		for(; item.compareTo(heap[pos/2]) < 0; pos = pos/2) {
 			heap[pos] = heap[pos/2];
+			insideCount++;
+		}
+		operationCount += (outsideCount*insideCount);
 		//put item in final position
+		operationCount++;
 		heap[pos] = item;
 	}
 
@@ -136,14 +154,23 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	}
 	private void growArray()
 	{
+		operationCount++;
 		growArray(heap.length << 1);
 	}
 	private void growArray(int newSize)
 	{
+		operationCount++;
 		E[] old = heap;
+		operationCount++;
 		heap = (E []) new Comparable[ newSize ];
-        for( int i = 1; i <= currentSize; i++ )
+		
+		int insideCount = 0;
+		int outsideCount = currentSize + 1;
+        for( int i = 1; i <= currentSize; i++ ) {
+        	insideCount++;
         	heap[ i ] = old[ i ];
+        }
+        operationCount += (outsideCount*insideCount);
 	}
 	private int nextSize()
 	{

@@ -36,5 +36,17 @@ public class SixDotTwelve{
 		MyBinaryHeap<Integer> mbh25B = new MyBinaryHeap<>(n25);
 		MyBinaryHeap<Integer> mbh50B = new MyBinaryHeap<>(n50);
 		MyBinaryHeap<Integer> mbh100B = new MyBinaryHeap<>(n100);
+		
+		//Printing
+		System.out.println("== Single Insert Op Counts ==");
+		System.out.println("n10 Op Count: " + mbh10.getOpCount());
+		System.out.println("n25 Op Count: " + mbh25.getOpCount());
+		System.out.println("n50 Op Count: " + mbh50.getOpCount());
+		System.out.println("n100 Op Count: " + mbh100.getOpCount());
+		System.out.println("== Bulk Inserts Op Counts ==");
+		System.out.println("n10 Bulk Insert Op Count: " + mbh10B.getOpCount());
+		System.out.println("n25 Bulk Insert Op Count: " + mbh25B.getOpCount());
+		System.out.println("n50 Bulk Insert Op Count: " + mbh50B.getOpCount());
+		System.out.println("n100 Bulk Insert Op Count: " + mbh100B.getOpCount());
 	}
 }
