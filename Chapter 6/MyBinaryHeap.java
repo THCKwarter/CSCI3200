@@ -9,12 +9,14 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	public MyBinaryHeap()
 	{
 		this(DEFAULT_CAPACITY);
+		operationCount++;
 	}
 	public MyBinaryHeap(int size)
 	{
+		operationCount++;
 		currentSize = 0;
+		operationCount++;
 		heap = (E[]) new Comparable[ nextSize(size) ];
-		operationCount += 2;
 	}
 	public MyBinaryHeap(E[] items)
 	{
@@ -76,24 +78,25 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	}
 	public void buildHeap()
 	{
-		int outsideCount = (currentSize/2);
-		int perCount = 0;
 		//start with lowest parent
-		operationCount++;
+		operationCount += 2;
 		for(int i = currentSize / 2; i > 0; i--)
 		{
-			perCount += percolateDown(i);
+			percolateDown(i);
+			operationCount++;
+			operationCount++;
 		}
-		operationCount += (outsideCount*perCount);
 	}
 
 	public void insert(E item)
 	{
 		//array is currently full, add next depth
 		operationCount++;
+		operationCount++;
 		if( currentSize == heap.length - 1 ) {
-			growArray(heap.length * 2);
 			operationCount++;
+			operationCount++;
+			growArray(heap.length * 2);
 		}
 		
 		operationCount++;
@@ -109,15 +112,17 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 	{
 		operationCount++;
 		E item = heap[0];
-		int outsideCount = currentSize + 1;
-		int insideCount = 0;
 		//check if item is smaller than parent
 		//pos/2 = parent, 11 and 10 divided by 2 = 5
+		operationCount++;
+		operationCount++;
 		for(; item.compareTo(heap[pos/2]) < 0; pos = pos/2) {
+			operationCount += 2;
 			heap[pos] = heap[pos/2];
-			insideCount++;
+			
+			operationCount++;
+			operationCount++;
 		}
-		operationCount += (outsideCount*insideCount);
 		//put item in final position
 		operationCount++;
 		heap[pos] = item;
@@ -125,61 +130,62 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 
 	public E deleteMin()
 	{
+		operationCount++;
 		if(currentSize == 0)
 			return null;
 		//smallest item
+		operationCount++;
 		E temp = heap[1];
 
 		//move last item to the root
+		operationCount++;
 		heap[1] = heap[currentSize];
+		operationCount++;
 		currentSize--;
 
 		//shift last item down to where it belongs
+		operationCount++;
 		percolateDown(1);
 
 		//return smallest item
 		return temp;
 	}
-	private int percolateDown(int pos)
+	private void percolateDown(int pos)
 	{
-		int perDownOpCount = 0;
-		perDownOpCount++;
+		operationCount++;
 		int child;
-		perDownOpCount++;
+		operationCount++;
 		E temp = heap[pos];
 		
-		int outsideCount = pos;
-		int insideCount = 0;
+		operationCount += 2;
 		//check if there are children
 		for(; pos*2 <= currentSize; pos = child)
 		{
-			insideCount++;
+			operationCount += 2;
 			child = pos*2;
 			//is there 2 children
 			//if there are check if second child is smaller
-			insideCount++;
+			operationCount++;
 			if(child != currentSize && heap[child+1].compareTo(heap[child]) < 0) {
 				child++;
-				insideCount++;
+				operationCount++;
 			}
 				
 			//smaller child compare to parent
-			insideCount++;
+			operationCount++;
 			if(heap[child].compareTo(temp) < 0){
-				insideCount++;
+				operationCount++;
 				heap[pos] = heap[child];
 			}else{
 				break;
 			}
 		}
-		perDownOpCount++;
+		operationCount++;
 		heap[pos] = temp;
-		
-		perDownOpCount += (outsideCount*insideCount);
-		return perDownOpCount;
 	}
 	public E findMin()
 	{
+		operationCount++;
 		if(currentSize == 0)
 			return null;
 		return heap[1];
@@ -206,20 +212,23 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 		operationCount++;
 		heap = (E []) new Comparable[ newSize ];
 		
-		int insideCount = 0;
-		int outsideCount = currentSize + 1;
+		operationCount += 2;
         for( int i = 1; i <= currentSize; i++ ) {
-        	insideCount++;
+        	operationCount++;
         	heap[ i ] = old[ i ];
+        	
+        	operationCount++;
+        	operationCount++;
         }
-        operationCount += (outsideCount*insideCount);
 	}
 	private int nextSize()
 	{
+		operationCount++;
 		return heap.length << 1;//same as heap.length * 2
 	}
 	private int nextSize(int size)
 	{
+		operationCount++;
 		return 1 << Integer.toBinaryString(size).length();
 	}
 }
