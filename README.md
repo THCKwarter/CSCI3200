@@ -51,4 +51,13 @@ NOTE: Make sure to provide equals and hashCode methods in the private class to g
 6.12 - Write a program to take N elements and insert them one by one into a heap, as well as bulk insert. Compare the actual operation count difference for both. Records this for values of N (10, 25, 50, 100)
 Note: Create the list of elements first, then start the operation count as you create the heap and populate it from each method (looking for operations performed by the heap class, not the tester class)
 
-6 - Implement Algorithm 6A
+6 - Implement Algorithm 6A & 6B
+
+6.14 - Give formulas for finding the parents/children based on the value i
+
+6.32 - Merge the two binomial queues in 6.59
+NOTE: a binomial queue is a forest of binomial trees, where each tree is a unique size
+
+6.35 - For the binomial queue:
+a. Modify the merge routine to terminate merging if there are no trees left in H2 and the carry tree is null.
+b. Modify the merge so that the smaller tree is always merged into the larger.

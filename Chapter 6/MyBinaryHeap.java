@@ -60,6 +60,38 @@ public class MyBinaryHeap<E extends Comparable<? super E>> {
 		return operationCount;
 	}
 	
+	public E getKthL(int k, Integer[] arr){
+		//Index check
+		if(k > currentSize || k < 0){
+			System.out.println("Kth value was out of range.");
+			return null;
+		}
+		
+		//Variables
+		E kth = null;
+		MyBinaryHeap<Integer> s = new MyBinaryHeap<>(k);
+		int count = k;
+		
+		//Insert k elements of arr into heap s
+		for(int i = 0; i < k; i++){
+			s.insert(arr[i]);
+		}
+		
+		//Clean up heap
+		s.buildHeap();
+		
+		//Find kth largest
+		for(int i = k; i < arr.length; i++){
+			if(arr[i] > s.findMin()){
+				s.deleteMin();
+				s.insert(arr[i]);
+			}
+		}
+		
+		kth = (E)s.findMin();
+		return kth;
+	}
+	
 	public String toString()
 	{
 		String output = "Size:" + currentSize + "\n";
