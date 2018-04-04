@@ -75,6 +75,11 @@ public final class BinomialQueue<AnyType extends Comparable<? super AnyType>>
             BinNode<AnyType> t1 = theTrees[ i ];
             BinNode<AnyType> t2 = i < rhs.theTrees.length ? rhs.theTrees[ i ] : null;
 
+            //Exit if no trees left in H2, and carry is null
+            if(carry == null && t2 == null){
+            	break;
+            }
+
             int whichCase = t1 == null ? 0 : 1;
             whichCase += t2 == null ? 0 : 2;
             whichCase += carry == null ? 0 : 4;
@@ -93,7 +98,7 @@ public final class BinomialQueue<AnyType extends Comparable<? super AnyType>>
                 carry = null;
                 break;
               case 3: /* this and rhs */
-                carry = combineTrees( t1, t2 );
+                carry = combineTrees( t2, t1 );
                 theTrees[ i ] = rhs.theTrees[ i ] = null;
                 break;
               case 5: /* this and carry */
@@ -106,7 +111,7 @@ public final class BinomialQueue<AnyType extends Comparable<? super AnyType>>
                 break;
               case 7: /* All three */
                 theTrees[ i ] = carry;
-                carry = combineTrees( t1, t2 );
+                carry = combineTrees( t2, t1 );
                 rhs.theTrees[ i ] = null;
                 break;
             }
