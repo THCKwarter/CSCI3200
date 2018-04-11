@@ -61,3 +61,14 @@ NOTE: a binomial queue is a forest of binomial trees, where each tree is a uniqu
 6.35 - For the binomial queue:
 a. Modify the merge routine to terminate merging if there are no trees left in H2 and the carry tree is null.
 b. Modify the merge so that the smaller tree is always merged into the larger.
+
+# Chapter 7 Assignments
+7.1 - Show each step of insertion sort
+
+7.4 - Show each step of shellsort
+
+7.11 - Show each step of heapsort
+
+7.15 - Show each step of mergesort
+
+Radix Sort - Modify the radix sort we created in class to allow strings of various lengths to be properly sorted WITHOUT any additional data structures used to store data
