@@ -253,21 +253,41 @@ public class SortingMethods {
 	public static void radixSortStringDiffLength(String[] arr)
 	{
 		//Use other radix sort method as a starting point
-		//do not add any additional data structures/variables, but you can increase the number of buckets if you need to
+		//do not add any additional data structures, but you can increase the number of buckets if you need to
+		//System.out.println("Initial:"+Arrays.toString(arr));
 		//number of buckets (256 in character set)
 		int maxBuckets = 256;
 
 		//buckets need to be lists instead of counters
 		ArrayList<String>[] buckets = new ArrayList[maxBuckets];
 		
+		//Find biggest string in array
+		int maxLength = 0;
 		for(String s : arr){
-			for(int i = 0; i < s.length(); i++){
-				if(buckets[s.charAt(i)] == null)
-					buckets[s.charAt(i)] = new ArrayList<>();
-				//add to appropriate bucket
-				buckets[s.charAt(i)].add(s);
+			if(s.length() > maxLength){
+				maxLength = s.length();
 			}
-			
+		}
+		
+		//loop from end to beginning of strings (sort by last character first)
+		for(int i = maxLength-1; i >= 0; i--)
+		{
+			//loop through each string
+			for(int j = 0; j < arr.length; j++)
+			{
+				if(arr[j].length() < maxLength){
+					//Special case
+					if(buckets[0] == null)
+						buckets[0] = new ArrayList<>();
+					//add to appropriate bucket
+					buckets[0].add(arr[j]);
+				}else{
+					if(buckets[arr[j].charAt(i)] == null)
+						buckets[arr[j].charAt(i)] = new ArrayList<>();
+					//add to appropriate bucket
+					buckets[arr[j].charAt(i)].add(arr[j]);
+				}
+			}
 			//loop through buckets
 			int index = 0;
 			for(int j = 0; j < buckets.length; j++)
