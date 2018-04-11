@@ -254,5 +254,34 @@ public class SortingMethods {
 	{
 		//Use other radix sort method as a starting point
 		//do not add any additional data structures/variables, but you can increase the number of buckets if you need to
+		//number of buckets (256 in character set)
+		int maxBuckets = 256;
+
+		//buckets need to be lists instead of counters
+		ArrayList<String>[] buckets = new ArrayList[maxBuckets];
+		
+		for(String s : arr){
+			for(int i = 0; i < s.length(); i++){
+				if(buckets[s.charAt(i)] == null)
+					buckets[s.charAt(i)] = new ArrayList<>();
+				//add to appropriate bucket
+				buckets[s.charAt(i)].add(s);
+			}
+			
+			//loop through buckets
+			int index = 0;
+			for(int j = 0; j < buckets.length; j++)
+			{
+				//add each string back to original
+				for(int k = 0; buckets[j] != null && k < buckets[j].size(); k++, index++)
+				{
+					arr[index] = buckets[j].get(k);
+					//index++;
+				}
+				if(buckets[j] != null)
+					buckets[j].clear();
+				//clear bucket
+			}
+		}
 	}
 }
