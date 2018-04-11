@@ -5,13 +5,6 @@ import java.util.Arrays;
 
 public class RadixSorter{
 	public static void main(String[] args){
-		/**/
-		String[] a1 = new String[]{"abe", "bac", "abc", "bca", "bca"};
-		System.out.println("          Unsorted: " + Arrays.toString(a1) + "\n\n");
-		SortingMethods.radixSortStringSameLength(a1, 3);
-		System.out.println(" Radix Same Length: " + Arrays.toString(a1) + "\n\n");
-		/**/
-
 		/*Homework*/
 		//{"abe", "bac", "abc", "bcaz", "bcaa"}
 		String[] a2 = new String[]{"abe", "bac", "abc", "bcaz", "bcaa"};

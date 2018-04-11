@@ -261,31 +261,29 @@ public class SortingMethods {
 		//buckets need to be lists instead of counters
 		ArrayList<String>[] buckets = new ArrayList[maxBuckets];
 		
-		//Find biggest string in array
-		int maxLength = 0;
+		int maxLen = 0;
 		for(String s : arr){
-			if(s.length() > maxLength){
-				maxLength = s.length();
+			if(s.length() > maxLen){
+				maxLen = s.length();
 			}
 		}
-		
+
 		//loop from end to beginning of strings (sort by last character first)
-		for(int i = maxLength-1; i >= 0; i--)
+		for(int i = maxLen-1; i >= 0; i--)
 		{
 			//loop through each string
 			for(int j = 0; j < arr.length; j++)
 			{
-				if(arr[j].length() < maxLength){
-					//Special case
-					if(buckets[0] == null)
-						buckets[0] = new ArrayList<>();
-					//add to appropriate bucket
-					buckets[0].add(arr[j]);
-				}else{
+				try {
 					if(buckets[arr[j].charAt(i)] == null)
 						buckets[arr[j].charAt(i)] = new ArrayList<>();
 					//add to appropriate bucket
 					buckets[arr[j].charAt(i)].add(arr[j]);
+				}catch(StringIndexOutOfBoundsException e){
+					if(buckets[0] == null)
+						buckets[0] = new ArrayList<>();
+					//add to appropriate bucket
+					buckets[0].add(arr[j]);
 				}
 			}
 			//loop through buckets
@@ -302,6 +300,7 @@ public class SortingMethods {
 					buckets[j].clear();
 				//clear bucket
 			}
+			//System.out.println(i+":"+Arrays.toString(arr));
 		}
 	}
 }
