@@ -48,36 +48,36 @@ toString
 	
 	// =====================
 	//Begin topological sort
-	public String sort(){
-		ArrayList<Vertex> arr = new ArrayList<>();
-		Queue<Vertex> q = new LinkedList<>();
-		Vertex temp;
-		String output = "";
-		sortHelper(q);
-		while(!q.isEmpty()){
-			temp = q.remove();
-			output += temp + ", | ";
-		}
-		return "Sorted: " + output;
-	}
-	private String sortHelper(Queue q){
-		findZeroIndegree(q);
-		if(q.isEmpty()){
-			return "Queue is empty.";
-		}else{
-			findZeroIndegree(q);
-			sortHelper(q);
-		}
-		return "Sort complete.";
-	}
-	private void findZeroIndegree(Queue q){
-		for(Map.Entry<String,Vertex> vertex : graph.entrySet()){
+	public String sort(){ //Big oh of sort() = O(N^2)
+		Queue<Vertex> q = new LinkedList<>(); //+1
+		int counter = 0; //+2
+		String output = ""; //+2
+		
+		for(Map.Entry<String,Vertex> vertex : graph.entrySet()){ //N
 			if(vertex.getValue().getIndegree() == 0){
 				q.add(vertex.getValue());
-				System.out.println("Value: " + vertex.getValue());
-				graph.remove(vertex);//I have no idea how to manipulate this
 			}
 		}
+		
+		while(!q.isEmpty()){ //N + N^2
+			Vertex v = q.remove(); //+2
+			v.setTopNum((counter++)); //+2
+			
+			TreeMap<String, Integer> adjacent = v.getAdj(); //+2
+			for(Map.Entry<String,Integer> adj : adjacent.entrySet()){ //N*N
+				if(graph.containsKey(adj.getKey())){
+					if((graph.get(adj.getKey()).getIndegree()-1) == 0){
+						q.add(graph.get(adj.getKey()));
+					}
+				}
+			}
+		}
+		
+		for(Map.Entry<String,Vertex> v : graph.entrySet()){ //N
+			output += v.getKey() + ", ";
+		}
+		
+		return output;
 	}
 	//End topological sort
 	// =====================

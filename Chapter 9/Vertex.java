@@ -10,12 +10,13 @@ toString
  */
 	private String name;
 	private TreeMap<String, Integer> adjacent;
-	private int indegree;
+	private int indegree, topNum;
 	public Vertex(String n)
 	{
 		name = n;
 		adjacent = new TreeMap<>();
 		indegree = 0;
+		topNum = 0;
 	}
 	public void addEdge(String vertex, Integer weight)
 	{
@@ -32,9 +33,20 @@ toString
 	{
 		indegree += i;
 	}
+	public void setTopNum(int i)
+	{
+		topNum = i;
+	}
+	public int getTopNum()
+	{
+		return topNum;
+	}
 	public int getIndegree()
 	{
 		return indegree;
+	}
+	public TreeMap<String, Integer> getAdj(){
+		return adjacent;
 	}
 	public String toString()
 	{

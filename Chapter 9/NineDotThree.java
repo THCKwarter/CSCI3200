@@ -15,10 +15,10 @@ public class NineDotThree{
 		g.addEdge("V5", "V4");
 		g.addEdge("V5", "V7");
 		g.addEdge("V7", "V6");
-		//System.out.println("Before sort: ");
-		//System.out.println(g);
+		System.out.println("Before sort: ");
+		System.out.println(g);
 		
-		System.out.println("After sort: ");
+		System.out.println("Sorted order: (Done in O(N^2)) ");
 		System.out.println(g.sort());
 	}
 }
