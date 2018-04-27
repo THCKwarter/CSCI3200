@@ -33,18 +33,42 @@ public class ASCII implements Comparable<ASCII>{
 
 	@Override
 	public int compareTo(ASCII a){
-		if(this.frequency == a.getFreq()){
-			if(this.asciiVal > a.getVal()) {
-				return 1;
+		if(this.frequency == a.getFreq()) {
+			if(this.asciiVal == a.getVal()) {
+				return 0;
 			}else if(this.asciiVal < a.getVal()) {
 				return -1;
 			}else {
-				return 0;
+				return 1;
 			}
-		}else if(this.frequency > a.getFreq()){
-			return -1;
+		}else if(this.frequency < a.getFreq()) {
+			if(this.asciiVal == a.getVal()) {
+				return 0;
+			}else {
+				return 1;
+			}
 		}else {
-			return 1;
+			if(this.asciiVal == a.getVal()) {
+				return 0;
+			}else {
+				return -1;
+			}
 		}
+	}
+
+	@Override
+	public int hashCode(){
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + asciiVal;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj){
+		ASCII other = (ASCII) obj;
+		if(asciiVal != other.asciiVal)
+			return false;
+		return true;
 	}
 }
