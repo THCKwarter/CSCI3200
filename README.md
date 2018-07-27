@@ -1,4 +1,6 @@
 # CSCI3200
+Note that not all of these are fully functional.
+
 # Chapter 1 Assignments
 1.1 - Write a program to solve the selection problem. Let k=N/2. Draw a table showing the running time of your program for various values of N (10, 100, 1000, 10000). Make sure you submit a working java program and the runtime in seconds to 5 decimal places for at least the 4 problem sizes above.
 
